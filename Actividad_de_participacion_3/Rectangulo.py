@@ -30,6 +30,9 @@ class Rectangulo:
         alto = self.calcular_alto()
         return ancho * alto
     
+    def es_cuadrado(self):
+        return self.calcular_ancho() == self.calcular_alto()
+    
     
 Rectangulo_A = Rectangulo("Rectangulo_A", (1, 2), (4, 5))
 
@@ -42,3 +45,8 @@ print(f"Perímetro de {Rectangulo_A.nombre}: {perimetro}")
 
 area = Rectangulo_A.calcular_area()
 print(f"Área de {Rectangulo_A.nombre}: {area}")
+
+if Rectangulo_A.es_cuadrado():
+    print(f"{Rectangulo_A.nombre} es un cuadrado")
+else:
+    print(f"{Rectangulo_A.nombre} no es un cuadrado")
