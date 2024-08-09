@@ -1,8 +1,8 @@
 class Circulo:
-    def __init__(self, nombre, centro, radio):
+    def __init__(self, nombre = "Circulo_A"):
         self.nombre = nombre
-        self.centro = centro
-        self.radio = radio
+        self.centro = 0,0
+        self.radio = 5
 
     def calcular_perimetro(self):
         return 2 * 3.1416 * self.radio
@@ -14,24 +14,21 @@ class Circulo:
         distancia_al_centro = ((punto[0] - self.centro[0]) ** 2 + (punto[1] - self.centro[1]) ** 2) ** 0.5
         return distancia_al_centro <= self.radio
 
-Circulo_A = Circulo("Circulo_A", (0, 0), 5)
+circulo = Circulo()
 
+print(f"El centro del {circulo.nombre} es:")
+print(f"  X: {circulo.centro[0]:.2f}")
+print(f"  Y: {circulo.centro[1]:.2f}")
+print(f"El radio del {circulo.nombre} es: {circulo.radio:.2f}")
 
-print(f"El centro del {Circulo_A.nombre} es:")
-print(f"  X: {Circulo_A.centro[0]:.2f}")
-print(f"  Y: {Circulo_A.centro[1]:.2f}")
-print(f"El radio del {Circulo_A.nombre} es: {Circulo_A.radio:.2f}")
+perimetro = circulo.calcular_perimetro()
+print(f"El perímetro del {circulo.nombre} es: {perimetro:.2f}")
 
-perimetro = Circulo_A.calcular_perimetro()
-print(f"El perímetro del {Circulo_A.nombre} es: {perimetro:.2f}")
+area = circulo.calcular_area()
+print(f"El área del {circulo.nombre} es: {area:.2f}")
 
-area = Circulo_A.calcular_area()
-print(f"El área del {Circulo_A.nombre} es: {area:.2f}")
-
-
-punto = (98, 85)
-if Circulo_A.pertenece_al_circulo(punto):
-    print(f"El punto ({punto[0]}, {punto[1]}) pertenece al {Circulo_A.nombre}")
+punto = (3, 4)
+if circulo.pertenece_al_circulo(punto):
+    print(f"El punto ({punto[0]}, {punto[1]}) pertenece al {circulo.nombre}")
 else:
-    print(f"El punto ({punto[0]}, {punto[1]}) no pertenece al {Circulo_A.nombre}")
-
+    print(f"El punto ({punto[0]}, {punto[1]}) no pertenece al {circulo.nombre}")
