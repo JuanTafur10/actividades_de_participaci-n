@@ -20,6 +20,11 @@ class CuentaBancaria:
         else:
             print("No se puede retirar un monto negativo o cero.")
 
+    def aplicar_cuota_manejo(self):
+        cuota_manejo = self.__balance * 0.02
+        self.__balance -= cuota_manejo
+        print(f"Se ha aplicado una cuota de manejo del 2% sobre la cuenta {self.numero_cuenta}. Cuota: ${cuota_manejo:.2f}. Saldo actual: ${self.__balance:.2f}")
+
 
     def imprimir_datos(self):
         print(f"Saldo actual: ${self.__balance:.2f}")
@@ -31,5 +36,8 @@ cuenta.imprimir_datos()
 cuenta.depositar(50000)
 cuenta.imprimir_datos()
 
-cuenta.retirar(90000)
+
+cuenta.aplicar_cuota_manejo()
+
+cuenta.retirar(30000)
 print(f"Saldo actual: ${cuenta._CuentaBancaria__balance:.2f}")
