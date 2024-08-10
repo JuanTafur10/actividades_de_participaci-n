@@ -29,6 +29,12 @@ class CuentaBancaria:
     def imprimir_datos(self):
         print(f"Saldo actual: ${self.__balance:.2f}")
 
+    def mostrar_detalles(self):
+        print("Detalles de la cuenta bancaria:")
+        print(f"Número de cuenta: {self.numero_cuenta}")
+        print(f"Propietarios: {', '.join(self.propietarios)}")
+        print(f"Saldo actual: ${self.__balance:.2f}")
+
 cuenta = CuentaBancaria()
 cuenta.imprimir_datos()
 
@@ -41,3 +47,6 @@ cuenta.aplicar_cuota_manejo()
 
 cuenta.retirar(30000)
 print(f"Saldo actual: ${cuenta._CuentaBancaria__balance:.2f}")
+
+cuenta.mostrar_detalles()
+
