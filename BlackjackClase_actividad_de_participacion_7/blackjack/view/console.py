@@ -62,7 +62,41 @@ class UIConsola:
             self.ejecutar_turno_de_la_casa()
 
     def ejecutar_turno_de_la_casa(self):
-        pass
+        self.blackjack.cupier.mano.destapar()
+        
+        self.mostrar_manos(self.blackjack.cupier.mano, self.blackjack.jugador.mano)
+        
+        while True:
+            valor_cupier = self.blackjack.cupier.mano.calcular_valor()
+            if isinstance(valor_cupier, str):
+                print("\nNo se puede determinar el valor de la mano de la casa.")
+                return
+            if valor_cupier >= 17:
+                break
+            self.blackjack.repartir_carta_a_la_casa()
+            self.mostrar_manos(self.blackjack.cupier.mano, self.blackjack.jugador.mano)
+            
+        valor_cupier = self.blackjack.cupier.mano.calcular_valor()
+        valor_jugador = self.blackjack.jugador.mano.calcular_valor()
+        
+        if isinstance(valor_cupier, str):
+            print("\nNo se puede determinar el valor de la mano de la casa.")
+            return
+        
+        if valor_cupier > 21:
+            print("\nFELICITACIONES, LA CASA SE PASÓ. HAS GANADO EL JUEGO")
+        elif valor_cupier == 21 and len(self.blackjack.cupier.mano.cartas) == 2:
+            print("\nHAS PERDIDO EL JUEGO, LA CASA TIENE BLACKJACK")
+        else:
+            if isinstance(valor_jugador, str):
+                print("\nNo se puede determinar el valor de la mano del jugador.")
+                return
+            if valor_cupier > valor_jugador:
+                print("\nHAS PERDIDO EL JUEGO")
+            elif valor_cupier < valor_jugador:
+                print("\nFELICITACIONES, HAS GANADO EL JUEGO")
+            else:
+                print("\nEMPATE")
 
     def pedir_apuesta(self):
         apuesta: int = int(input("¿Cuál es su apuesta?: "))
