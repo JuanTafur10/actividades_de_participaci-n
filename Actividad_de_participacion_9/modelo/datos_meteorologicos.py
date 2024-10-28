@@ -9,6 +9,8 @@ class DatosMeteorologicos():
         count_humedad = 0
         suma_presion = 0
         count_presion = 0
+        suma_viento = 0
+        count_viento = 0
         
         with open(self.nombre_archivo, "r") as archivo:
             for linea in archivo:
@@ -27,6 +29,11 @@ class DatosMeteorologicos():
                     valor_presion = float(linea.split(":")[1].strip())
                     suma_presion += valor_presion
                     print(valor_presion)
+                elif "Viento" in linea:
+                    count_viento += 1
+                    valor_viento = float(linea.split(":")[1].strip())
+                    suma_viento += valor_viento
+                    print(valor_viento)
 
         print("suma_temperatura: ", suma_temperatura)
         print("count_temperaturas: ", count_temperaturas)
@@ -39,4 +46,8 @@ class DatosMeteorologicos():
         print("suma_presion: ", suma_presion)
         print("count_presion: ", count_presion)
         print("promedio_presion: ", suma_presion / count_presion)
+
+        print("suma_viento: ", suma_viento)
+        print("count_viento: ", count_viento)
+        print("promedio_viento: ", suma_viento / count_viento)
 
