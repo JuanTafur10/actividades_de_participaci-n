@@ -7,6 +7,8 @@ class DatosMeteorologicos():
         count_temperaturas = 0
         suma_humedad = 0
         count_humedad = 0
+        suma_presion = 0
+        count_presion = 0
         
         with open(self.nombre_archivo, "r") as archivo:
             for linea in archivo:
@@ -20,6 +22,11 @@ class DatosMeteorologicos():
                         valor_humedad = float(linea.split(":")[1].strip())
                         suma_humedad += valor_humedad
                         print(valor_humedad)
+                elif "Presión" in linea:
+                    count_presion += 1
+                    valor_presion = float(linea.split(":")[1].strip())
+                    suma_presion += valor_presion
+                    print(valor_presion)
 
         print("suma_temperatura: ", suma_temperatura)
         print("count_temperaturas: ", count_temperaturas)
@@ -28,3 +35,8 @@ class DatosMeteorologicos():
         print("suma_humedad: ", suma_humedad)
         print("count_humedad: ", count_humedad)
         print("promedio_humedad: ", suma_humedad / count_humedad)
+
+        print("suma_presion: ", suma_presion)
+        print("count_presion: ", count_presion)
+        print("promedio_presion: ", suma_presion / count_presion)
+
