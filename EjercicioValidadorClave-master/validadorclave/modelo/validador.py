@@ -27,3 +27,16 @@ class ReglaValidacionGanimedes(ReglaValidacion):
     def contiene_caracter_especial(self, valor):
         caracteres_especiales = "@_#$%"
         return any(char in caracteres_especiales for char in valor)
+    
+class ReglaValidacionCalisto(ReglaValidacion):
+    def __init__(self, longitud_esperada):
+        super().__init__(longitud_esperada)
+
+    def contiene_calisto(self, valor):
+        palabra = "calisto"
+        index = valor.lower().find(palabra)
+        if index == -1:
+            return False
+        subcadena = valor[index:index+len(palabra)]
+        mayusculas = sum(1 for char in subcadena if char.isupper())
+        return 2 <= mayusculas < len(palabra)
