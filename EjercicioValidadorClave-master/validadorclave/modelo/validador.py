@@ -19,3 +19,11 @@ class ReglaValidacion(ABC):
 
     def _contiene_numero(self, valor):
         return any(char.isdigit() for char in valor)
+    
+class ReglaValidacionGanimedes(ReglaValidacion):
+    def __init__(self, longitud_esperada):
+        super().__init__(longitud_esperada)
+
+    def contiene_caracter_especial(self, valor):
+        caracteres_especiales = "@_#$%"
+        return any(char in caracteres_especiales for char in valor)
